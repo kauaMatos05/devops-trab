@@ -31,5 +31,15 @@ jobs:
           echo "Última versão: ${ULTIMA:-nenhuma} | Nova versão: $VERSAO"
           echo "VERSAO=$VERSAO" >> $GITHUB_ENV
 
-      - name: Conferir variável
-        run: echo "A variável VERSAO chegou neste passo com o valor $VERSAO"
+      - name: Zipar conteúdo do repositório
+        run: |
+          NOME="${{ github.event.repository.name }}-$VERSAO"
+          git archive --format=zip --prefix="$NOME/" -o "$NOME.zip" HEAD
+          echo "ARQUIVO=$NOME.zip" >> $GITHUB_ENV
+
+      - name: Conferir o zip
+        run: |
+          echo "=== Arquivo criado ==="
+          ls -lh "$ARQUIVO"
+          echo "=== O que tem dentro do zip ==="
+          unzip -l "$ARQUIVO"
