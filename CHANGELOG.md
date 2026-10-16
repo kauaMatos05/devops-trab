@@ -2,6 +2,8 @@
 
 Últimas alterações do repositório (gerado automaticamente).
 
+- **2026-10-15** – Modify release.yml to calculate next version (`89c19e3`) por kauaMatos05
+- **2026-10-16** – docs: atualiza CHANGELOG [skip ci] (`fbba4e3`) por github-actions[bot]
 - **2026-10-15** – Add release workflow for manual package release (`a5cfd82`) por kauaMatos05
 - **2026-10-16** – docs: atualiza CHANGELOG [skip ci] (`df86a1a`) por github-actions[bot]
 - **2026-10-15** – Add GitHub Actions workflow for changelog generation (`02992f2`) por kauaMatos05
