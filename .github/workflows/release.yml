@@ -37,9 +37,11 @@ jobs:
           git archive --format=zip --prefix="$NOME/" -o "$NOME.zip" HEAD
           echo "ARQUIVO=$NOME.zip" >> $GITHUB_ENV
 
-      - name: Conferir o zip
+      - name: Criar release com o zip para download
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          echo "=== Arquivo criado ==="
-          ls -lh "$ARQUIVO"
-          echo "=== O que tem dentro do zip ==="
-          unzip -l "$ARQUIVO"
+          gh release create "$VERSAO" "$ARQUIVO" \
+            --title "Versão $VERSAO" \
+            --notes-file CHANGELOG.md \
+            --target "${{ github.sha }}"
