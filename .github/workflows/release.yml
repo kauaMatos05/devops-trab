@@ -16,9 +16,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Ver arquivos e tags
+      - name: Calcular próxima versão
         run: |
-          echo "=== Arquivos do repositório ==="
-          ls -la
-          echo "=== Tags que já existem ==="
-          git tag --list
+          ULTIMA=$(git tag --list 'v*' --sort=-v:refname | head -n 1)
+          if [ -z "$ULTIMA" ]; then
+            VERSAO="v1.0.0"
+          else
+            NUM=${ULTIMA#v}
+            MAIOR=$(echo $NUM | cut -d. -f1)
+            MENOR=$(echo $NUM | cut -d. -f2)
+            PATCH=$(echo $NUM | cut -d. -f3)
+            VERSAO="v$MAIOR.$MENOR.$((PATCH + 1))"
+          fi
+          echo "Última versão: ${ULTIMA:-nenhuma} | Nova versão: $VERSAO"
+          echo "VERSAO=$VERSAO" >> $GITHUB_ENV
+
+      - name: Conferir variável
+        run: echo "A variável VERSAO chegou neste passo com o valor $VERSAO"
