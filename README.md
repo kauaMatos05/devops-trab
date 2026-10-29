@@ -273,6 +273,7 @@ As notas são o texto que aparece na página da release, explicando o que mudou.
 ## Changelog
 
 <!-- CHANGELOG:START -->
+- **2026-10-29** – docs: explica cada etapa das Actions de changelog e release no README (`89533a5`) por kauaMatos05
 - **2026-10-28** – docs: restaura descrição completa das Actions no README (`c56feef`) por kauaMatos05
 - **2026-10-28** – fix: changelog substitui apenas a seção marcada no fim do README (`d384d5c`) por kauaMatos05
 - **2026-10-28** – chore: remove CHANGELOG.md (changelog agora fica no README) (`11061e3`) por kauaMatos05
