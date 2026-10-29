@@ -27,20 +27,20 @@ jobs:
       - name: Atualizar seção de changelog no README.md
         run: |
           awk -v arquivo=changelog.tmp '
-            /<!-- CHANGELOG:START -->/ {
+            /^<!-- CHANGELOG:START -->/ {
               print
               while ((getline linha < arquivo) > 0) print linha
               pular = 1
               next
             }
-            /<!-- CHANGELOG:END -->/ { pular = 0 }
+            /^<!-- CHANGELOG:END -->/ { pular = 0 }
             !pular
           ' README.md > README.novo
           mv README.novo README.md
           rm changelog.tmp
 
       - name: Mostrar no resumo da execução
-        run: sed -n '/<!-- CHANGELOG:START -->/,/<!-- CHANGELOG:END -->/p' README.md >> $GITHUB_STEP_SUMMARY
+        run: sed -n '/^<!-- CHANGELOG:START -->/,/^<!-- CHANGELOG:END -->/p' README.md >> $GITHUB_STEP_SUMMARY
 
       - name: Salvar README.md no repositório
         run: |

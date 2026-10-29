@@ -48,4 +48,5 @@ Este repositório contém uma pequena página web estática (pasta [`app/`](app/
 - **2026-10-15** – Add GitHub Actions workflow for Hello World (`85c5ac8`) por kauaMatos05
 - **2026-10-15** – Create CI workflow for GitHub Actions (`d06fd21`) por kauaMatos05
 <!-- CHANGELOG:START -->
+_Será preenchido automaticamente pela Action de changelog._
 <!-- CHANGELOG:END -->
