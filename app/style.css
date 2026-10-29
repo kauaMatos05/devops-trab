@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f2f4f8;
+  color: #1d2330;
+}
+
+main {
+  max-width: 480px;
+  margin: 48px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+h1 { margin: 0; }
+.sub { color: #667; margin-top: 4px; }
+
+form { display: flex; gap: 8px; margin: 20px 0; }
+input { flex: 1; padding: 10px; border: 1px solid #ccd; border-radius: 8px; }
+button { padding: 10px 14px; border: 0; border-radius: 8px; background: #2563eb; color: #fff; cursor: pointer; }
+
+ul { list-style: none; padding: 0; }
+li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #eee; }
+li.feita span { text-decoration: line-through; color: #999; }
+li button { background: #e11d48; padding: 6px 10px; }
+
+footer { margin-top: 24px; font-size: 0.85rem; color: #889; text-align: center; }
