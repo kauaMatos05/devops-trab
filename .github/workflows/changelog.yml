@@ -17,23 +17,35 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Gerar CHANGELOG.md
+      - name: Gerar lista de alterações a partir dos commits
         run: |
-          echo "# Changelog" > CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          echo "Últimas alterações do repositório (gerado automaticamente)." >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
-          git log -n 20 --no-merges --date=short \
-            --pretty=format:"- **%ad** – %s (\`%h\`) por %an" >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
+          git log -n 20 --no-merges --invert-grep --grep="\[skip ci\]" --date=short \
+            --pretty=format:"- **%ad** – %s (\`%h\`) por %an" > changelog.tmp
+          echo "" >> changelog.tmp
+          cat changelog.tmp
+
+      - name: Atualizar seção de changelog no README.md
+        run: |
+          awk -v arquivo=changelog.tmp '
+            /<!-- CHANGELOG:START -->/ {
+              print
+              while ((getline linha < arquivo) > 0) print linha
+              pular = 1
+              next
+            }
+            /<!-- CHANGELOG:END -->/ { pular = 0 }
+            !pular
+          ' README.md > README.novo
+          mv README.novo README.md
+          rm changelog.tmp
 
       - name: Mostrar no resumo da execução
-        run: cat CHANGELOG.md >> $GITHUB_STEP_SUMMARY
+        run: sed -n '/<!-- CHANGELOG:START -->/,/<!-- CHANGELOG:END -->/p' README.md >> $GITHUB_STEP_SUMMARY
 
-      - name: Salvar CHANGELOG.md no repositório
+      - name: Salvar README.md no repositório
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md
-          git diff --cached --quiet || git commit -m "docs: atualiza CHANGELOG [skip ci]"
+          git add README.md
+          git diff --cached --quiet || git commit -m "docs: atualiza changelog no README [skip ci]"
           git push
