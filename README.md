@@ -48,5 +48,17 @@ Este repositório contém uma pequena página web estática (pasta [`app/`](app/
 - **2026-10-15** – Add GitHub Actions workflow for Hello World (`85c5ac8`) por kauaMatos05
 - **2026-10-15** – Create CI workflow for GitHub Actions (`d06fd21`) por kauaMatos05
 <!-- CHANGELOG:START -->
-_Será preenchido automaticamente pela Action de changelog._
+- **2026-10-28** – fix: changelog substitui apenas a seção marcada no fim do README (`d384d5c`) por kauaMatos05
+- **2026-10-28** – chore: remove CHANGELOG.md (changelog agora fica no README) (`11061e3`) por kauaMatos05
+- **2026-10-28** – feat: changelog passa a ser registrado no README.md (`6137c0b`) por kauaMatos05
+- **2026-10-28** – feat: notas da release geradas a partir dos commits (`9785762`) por kauaMatos05
+- **2026-10-28** – feat: adiciona aplicação de lista de tarefas (`54431ad`) por kauaMatos05
+- **2026-10-15** – Update release.yml (`fe61665`) por kauaMatos05
+- **2026-10-15** – Add steps to zip repository contents in release workflow (`1bc58bd`) por kauaMatos05
+- **2026-10-15** – Modify release.yml to calculate next version (`89c19e3`) por kauaMatos05
+- **2026-10-15** – Add release workflow for manual package release (`a5cfd82`) por kauaMatos05
+- **2026-10-15** – Add GitHub Actions workflow for changelog generation (`02992f2`) por kauaMatos05
+- **2026-10-15** – Delete .github/workflows/teste.yml (`8d9da01`) por kauaMatos05
+- **2026-10-15** – Add GitHub Actions workflow for Hello World (`85c5ac8`) por kauaMatos05
+- **2026-10-15** – Create CI workflow for GitHub Actions (`d06fd21`) por kauaMatos05
 <!-- CHANGELOG:END -->
